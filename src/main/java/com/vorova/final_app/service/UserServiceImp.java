@@ -2,7 +2,6 @@ package com.vorova.final_app.service;
 
 import com.vorova.final_app.model.Role;
 import com.vorova.final_app.model.User;
-import com.vorova.final_app.repository.RoleRepository;
 import com.vorova.final_app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,15 +18,14 @@ public class UserServiceImp implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
 
-    private final RoleRepository roleRepository;
-
+    private final RoleService roleService;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleService roleService) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleService = roleService;
     }
 
     public void add(User user) {
@@ -50,7 +48,7 @@ public class UserServiceImp implements UserService, UserDetailsService {
         List<Role> listRole = new ArrayList<>();
 
         for (Long role : roles) {
-            listRole.add(roleRepository.findRoleById(role));
+            listRole.add(roleService.getRoleById(role));
         }
 
         user.setRoles(listRole);
@@ -58,7 +56,6 @@ public class UserServiceImp implements UserService, UserDetailsService {
 
         userRepository.save(user);
     }
-
 
     @Override
     @Transactional

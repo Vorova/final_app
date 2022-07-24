@@ -8,6 +8,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class ApplicationRunnerImp implements ApplicationRunner {
 
@@ -24,8 +27,8 @@ public class ApplicationRunnerImp implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        addAdmin();
         addRoles();
+        addAdmin();
     }
 
     private void addAdmin() {
@@ -35,6 +38,11 @@ public class ApplicationRunnerImp implements ApplicationRunner {
         admin.setLastName("Vorobyov");
         admin.setAge((byte) 26);
         admin.setPassword(passwordEncoder.encode("password"));
+
+        List<Role> roles = new ArrayList<>();
+        roles.add(roleService.getRoleById(1L));
+        roles.add(roleService.getRoleById(2L));
+        admin.setRoles(roles);
 
         try {
             userService.add(admin);
@@ -47,11 +55,6 @@ public class ApplicationRunnerImp implements ApplicationRunner {
     private void addRoles() {
         Role adminRole = new Role(1L, "ROLE_ADMIN");
         Role userRole = new Role(2L, "ROLE_USER");
-
-        User admin = new User();
-        admin.setId(1L);
-
-        adminRole.setUser(admin);
 
         try {
             roleService.addRole(adminRole);
