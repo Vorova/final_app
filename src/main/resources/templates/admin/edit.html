@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit user</title>
+</head>
+<body>
+<form th:action="@{/admin/save}" th:object="${user}" th:method="post">
+    <input type="number" name="id" th:field="*{id}" hidden>
+    <input type="text" name="name" th:field="*{username}">
+    <input type="text" name="email" th:field="*{email}">
+    <input type="submit" value="save!">
+</form>
+<hr>
+<form method="LINK" action="/logout">
+    <input type="submit" value="Logout">
+</form>
+</body>
+</html>

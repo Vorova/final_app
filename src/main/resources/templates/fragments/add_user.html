@@ -1,0 +1,47 @@
+<div th:fragment="add_user (newUser)">
+    <div class="container p-3 border">
+        <p class="h5">Add new user</p>
+    </div>
+    <div class="container bg-white border">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 p-4">
+                    <form th:action="@{/admin/add}" th:object="${newUser}" th:method="post">
+                        <div class="form-group mb-3 mt-3">
+                            <label for="firstName" class="d-flex justify-content-center fw-bold">User name</label>
+                            <input type="text" name="name" th:field="*{firstName}" class="form-control" id="firstName" placeholder="First name">
+                        </div>
+                        <div class="form-group mb-3 mt-3">
+                            <label for="lastName" class="d-flex justify-content-center fw-bold">Last name</label>
+                            <input type="text" name="name" th:field="*{lastName}" class="form-control" id="lastName" placeholder="Last name">
+                        </div>
+                        <div class="form-group mb-3 mt-3">
+                            <label for="age" class="d-flex justify-content-center fw-bold">Age</label>
+                            <input type="number" name="name" th:field="*{age}" class="form-control" id="age" placeholder="age">
+                        </div>
+                        <div class="form-group mb-3 mt-3">
+                            <label for="email" class="d-flex justify-content-center fw-bold">User email</label>
+                            <input type="email" name="email" th:field="*{email}" class="form-control" id="email" placeholder="User email">
+                        </div>
+                        <div class="form-group mb-3 mt-3">
+                            <label for="password" class="d-flex justify-content-center fw-bold">Password</label>
+                            <input type="password" name="password" th:field="*{password}" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <div class="form-group mb-3 mt-3">
+                            <label for="roles" class="d-flex justify-content-center fw-bold">Roles</label>
+                            <select class="form-control" multiple size="2" id="roles" name="roles">
+                                <option value="1" selected>USER</option>
+                                <option value="2">ADMIN</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success mt-1">Add new user</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
+</div>

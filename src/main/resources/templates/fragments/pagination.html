@@ -1,0 +1,12 @@
+<div th:fragment="pagination (roles)">
+    <ul class="nav nav-pills flex-column" aria-orientation="vertical">
+    <li
+                th:each="role : ${roles}"
+                class="nav-link mt-2"
+                role="button"
+                aria-selected="true"
+                th:onclick="location.href| '/' + ${role.authority.substring(5)}">
+            <span th:text="${role.authority.substring(5)} + ' '"></span>
+        </li>
+    </ul>
+</div>

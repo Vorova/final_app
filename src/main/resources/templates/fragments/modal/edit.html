@@ -1,0 +1,37 @@
+<div th:fragment="edit" class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit user</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group mb-3 mt-3">
+                        <label for="editId" class="d-flex justify-content-center fw-bold">ID</label>
+                        <input type="text" name="id" class="form-control" id="editId" readonly="true">
+                    </div>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="editUsername" class="d-flex justify-content-center fw-bold">User name</label>
+                        <input type="text" name="username" class="form-control" id="editUsername" placeholder="User name">
+                    </div>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="editEmail" class="d-flex justify-content-center fw-bold">User email</label>
+                        <input type="email" name="email" class="form-control" id="editEmail" placeholder="User email">
+                    </div>
+                    <div class="form-group mb-3 mt-3">
+                        <label for="editRoles" class="d-flex justify-content-center fw-bold">Roles</label>
+                        <select class="form-control" multiple size="2" id="editRoles" name="roles">
+                            <option value=1>USER</option>
+                            <option value=2>ADMIN</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editUser()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
