@@ -1,7 +1,7 @@
-<div class="container-fluid bg-dark text-white" th:fragment="header (user)">
+<div class="container-fluid bg-dark text-white" th:fragment="header">
     <div class="row">
         <div class="col p-3">
-            <b th:text="${user.email}">example@gmail.com</b> with roles: <b th:each="role: ${user.roles}"><span th:text="${role.authority.substring(5)} + ' '"></span></b>
+            <b id="header_email">example@gmail.com</b> with roles: <b><span id="header_roles">roles</span></b>
         </div>
         <div class="col-1 align-self-end p-3 cur">
             <div class="text-white-50 cursor-pointer" >

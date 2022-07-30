@@ -8,8 +8,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class ApplicationRunnerImp implements ApplicationRunner {
@@ -39,7 +39,7 @@ public class ApplicationRunnerImp implements ApplicationRunner {
         admin.setAge((byte) 26);
         admin.setPassword(passwordEncoder.encode("password"));
 
-        List<Role> roles = new ArrayList<>();
+        Set<Role> roles = new HashSet<>();
         roles.add(roleService.getRoleById(1L));
         roles.add(roleService.getRoleById(2L));
         admin.setRoles(roles);

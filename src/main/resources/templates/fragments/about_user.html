@@ -1,4 +1,4 @@
-<div th:fragment="about_user (about)">
+<div th:fragment="about_user">
     <div class="container p-3 border">
         <p class="h5">About user</p>
     </div>
@@ -12,18 +12,8 @@
             <th scope="col">Role</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td th:text="${user.firstName}">Mark</td>
-            <td th:text="${user.lastName}">Mark</td>
-            <td th:text="${user.age}">Mark</td>
-            <td th:text="${user.email}">Otto</td>
-            <td>
-                <span th:each="role: ${user.roles}">
-                    <span th:text="${role.authority.substring(5)} + ' '"></span>
-                </span>
-            </td>
-        </tr>
+        <tbody id="tableBodyAboutUser">
+
         </tbody>
     </table>
 </div>

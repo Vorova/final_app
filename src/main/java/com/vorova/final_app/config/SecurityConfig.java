@@ -12,7 +12,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig{
+public class SecurityConfig {
 
     private final SuccessUserHandler handler;
 
@@ -25,13 +25,13 @@ public class SecurityConfig{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .and()
                     .formLogin()
+                    .loginPage("/login")
                     .successHandler(handler)
-                    .permitAll()
                 .and()
                     .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

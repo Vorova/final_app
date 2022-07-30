@@ -1,4 +1,4 @@
-<div th:fragment="all_users (users)">
+<div th:fragment="all_users">
     <div class="container p-3 border" >
         <p class="h5">All users</p>
     </div>
@@ -15,37 +15,7 @@
             <th scope="col">Delete</th>
         </tr>
         </thead>
-        <tbody>
-        <tr th:each="user: ${users}" th:data-user="${user.id}">
-            <th scope="row" th:text="${user.id}" th:data-user-id="${user.id}">1</th>
-            <td th:text="${user.firstName}" th:data-user-firstName="${user.id}">Mark</td>
-            <td th:text="${user.lastName}" th:data-user-lastName="${user.id}">Otto</td>
-            <td th:text="${user.age}" th:data-user-age="${user.id}">Mark</td>
-            <td th:text="${user.email}" th:data-user-email="${user.id}">Otto@email.com</td>
-            <td th:data-user-roles="${user.id}">
-                <b th:each="role: ${user.roles}">
-                    <span th:text="${role.authority.substring(5)} + ' '"></span>
-                </b>
-            </td>
-            <td>
-                <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#editModal"
-                        th:data-user-id="${user.id}"
-                >Edit</button>
-            </td>
-            <td>
-                <button
-                        type="button"
-                        class="btn btn-danger"
-                        data-bs-toggle="modal"
-                        data-bs-target="#deleteModal"
-                        th:data-user-id="${user.id}"
-                >Delete</button>
-            </td>
-        </tr>
+        <tbody id="tableBody">
         </tbody>
     </table>
 </div>

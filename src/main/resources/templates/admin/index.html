@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="ru" th:replace="fragments/head :: head (${title})"></head>
+<head lang="ru" th:replace="fragments/head :: head"></head>
 <body>
 
-<div th:replace="fragments/header :: header (${user})"></div>
+<div th:replace="fragments/header :: header"></div>
 
 <div class="container-fluid">
     <div class="row">
@@ -21,7 +21,7 @@
                 <!--  USER INFORMATION PAGE  -->
                 <div class="tab-pane fade " id="v-pills-user" role="tabpanel" aria-labelledby="v-pills-user-tab">
                     <p class="h2">User information-page</p>
-                    <div th:replace="fragments/about_user :: about_user (${user})"></div>
+                    <div th:replace="fragments/about_user :: about_user"></div>
                 </div>
 
                 <!--   ADMIN PANEL-->
@@ -45,13 +45,13 @@
                         <!--   ALL USERS   -->
                         <div class="tab-pane fade show active" id="nav-user-table" role="tabpanel"
                              aria-labelledby="nav-user-table-tab">
-                            <div th:replace="fragments/all_users :: all_users (${users})"></div>
+                            <div th:replace="fragments/all_users :: all_users"></div>
                         </div>
 
                         <!--   NEW USER   -->
                         <div class="tab-pane fade" id="nav-new-user" role="tabpanel"
                              aria-labelledby="nav-new-user-tab">
-                            <div th:replace="fragments/add_user :: add_user (${newUser})"></div>
+                            <div th:replace="fragments/add_user :: add_user"></div>
                         </div>
                     </div>
                 </div>
@@ -65,18 +65,6 @@
 <div th:replace="fragments/modal/delete :: delete"></div>
 
 <div th:replace="fragments/foot :: foot"></div>
-<script>
-    $('#editModal').on('show.bs.modal', function (event) {
-        let button = $(event.relatedTarget);
-        let id = button.data('user-id');
-        showEditModal(id);
-    })
-    $('#deleteModal').on('show.bs.modal', function (event) {
-        let button = $(event.relatedTarget);
-        let id = button.data('user-id');
-        showDeleteModal(id);
-    })
-</script>
 
 </body>
 </html>
