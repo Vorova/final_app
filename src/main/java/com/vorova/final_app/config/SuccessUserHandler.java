@@ -18,7 +18,7 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(
             HttpServletRequest request,
             HttpServletResponse response,
-            Authentication authentication) throws IOException, ServletException {
+            Authentication authentication) throws IOException {
 
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 

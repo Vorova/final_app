@@ -29,6 +29,7 @@ public class ApplicationRunnerImp implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         addRoles();
         addAdmin();
+        System.err.println(" Приложение успешно запущено! \n");
     }
 
     private void addAdmin() {
@@ -46,7 +47,7 @@ public class ApplicationRunnerImp implements ApplicationRunner {
 
         try {
             userService.add(admin);
-            System.out.println("\n Администратор успешно создан \n");
+            System.err.println(" Администратор успешно создан");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -59,7 +60,7 @@ public class ApplicationRunnerImp implements ApplicationRunner {
         try {
             roleService.addRole(adminRole);
             roleService.addRole(userRole);
-            System.out.println("\n Роли добавлены в таблицу ролей \n");
+            System.err.println(" Роли добавлены в таблицу ролей");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -149,7 +149,7 @@ const getUser = async () => {
         roles.innerHTML = rolesHtml;
 
     } else {
-        alert("Ошибка HTTP: " + response.status);
+        alert("Error HTTP: " + response.status);
     }
 }
 
@@ -187,7 +187,7 @@ const getAllUsers = async () => {
             roles.innerHTML = rolesHtml;
         });
     } else {
-        alert("Ошибка HTTP: " + response.status);
+        alert("Error HTTP: " + response.status);
     }
 }
 
@@ -204,7 +204,7 @@ const getAllRoles = async () => {
             selectRoles.append(option);
         });
     } else {
-        alert("Ошибка HTTP: " + response.status);
+        alert("Error HTTP: " + response.status);
     }
 }
 
@@ -221,7 +221,7 @@ const getAllRolesByEdit = async () => {
             selectRoles.append(option);
         });
     } else {
-        alert("Ошибка HTTP: " + response.status);
+        alert("Error HTTP: " + response.status);
     }
 }
 
@@ -252,6 +252,18 @@ const addNewUser = () => {
         .then(() => {
             // Update data
             getAllUsers().then();
+            // Очистка полей
+            document.getElementById("firstName").value = "";
+            document.getElementById("lastName").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+            // Обнуление всех полей для Roles
+            let select = document.getElementById("newUserRoles");
+            for (let i = 0; i < select.length; i++) {
+                select[i].selected = false;
+            }
             document.querySelector('a[href="#nav-user-table"]').click();
         })
     });

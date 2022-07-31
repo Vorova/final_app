@@ -17,5 +17,4 @@ public class UserDTO {
     private String lastName;
     private byte age;
     private Set<RoleDTO> roles;
-
 }
